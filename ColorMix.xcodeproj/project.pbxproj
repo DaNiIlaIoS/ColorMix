@@ -11,7 +11,6 @@
 		48CFFDD62C8E0368005D3988 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDD52C8E0368005D3988 /* ContentView.swift */; };
 		48CFFDD82C8E036B005D3988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48CFFDD72C8E036B005D3988 /* Assets.xcassets */; };
 		48CFFDDB2C8E036B005D3988 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48CFFDDA2C8E036B005D3988 /* Preview Assets.xcassets */; };
-		48CFFDE32C8E0F49005D3988 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDE22C8E0F49005D3988 /* Color+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +19,6 @@
 		48CFFDD52C8E0368005D3988 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48CFFDD72C8E036B005D3988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48CFFDDA2C8E036B005D3988 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		48CFFDE22C8E0F49005D3988 /* Color+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +53,6 @@
 			children = (
 				48CFFDD32C8E0368005D3988 /* ColorMixApp.swift */,
 				48CFFDD52C8E0368005D3988 /* ContentView.swift */,
-				48CFFDE12C8E0F38005D3988 /* Extensions */,
 				48CFFDD72C8E036B005D3988 /* Assets.xcassets */,
 				48CFFDD92C8E036B005D3988 /* Preview Content */,
 			);
@@ -68,14 +65,6 @@
 				48CFFDDA2C8E036B005D3988 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		48CFFDE12C8E0F38005D3988 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				48CFFDE22C8E0F49005D3988 /* Color+Ex.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +139,6 @@
 			files = (
 				48CFFDD62C8E0368005D3988 /* ContentView.swift in Sources */,
 				48CFFDD42C8E0368005D3988 /* ColorMixApp.swift in Sources */,
-				48CFFDE32C8E0F49005D3988 /* Color+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
