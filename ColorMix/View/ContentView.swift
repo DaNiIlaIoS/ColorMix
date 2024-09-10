@@ -7,7 +7,17 @@
 
 import SwiftUI
 
+enum ColorAction {
+    case add
+    case edit(CustomColor)
+}
+
 struct ContentView: View {
+//    @ObservedObject var viewModel: ColorMixViewModel
+    var network = NetworkManager.shared
+    let viewModel = ColorMixViewModel()
+    var action: ColorAction
+    
     @State private var redIsOn: Bool = false
     @State private var redValue: Double = 127
     
@@ -18,7 +28,11 @@ struct ContentView: View {
     @State private var blueValue: Double = 127
     
     @State private var selectedLanguage: String = "en"
-
+    
+    @Binding var colors: [CustomColor]
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 50) {
@@ -36,14 +50,37 @@ struct ContentView: View {
                 .font(.system(size: 22, weight: .bold))
                 
                 VStack {
-                    Rectangle()
-                        .frame(height: 150)
-                        .foregroundStyle(changeColor())
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 5))
+                    RectangleColor(height: 150, color: changeColor())
                         .animation(.easeInOut(duration: 0.5), value: changeColor())
                     Text("Hex color = \(rgbToHex())")
                         .font(.system(size: 24, weight: .bold))
+                }
+                
+                Button {
+                    network.fetchColor(hex: rgbToHex()) { colorName in
+                        DispatchQueue.main.async {
+                            let newColor = CustomColor(color: changeColor(), name: colorName ?? "Unknown")
+                            
+                            switch action {
+                            case .add:
+                                colors.append(newColor)
+                            case .edit(let color):
+                                if let index = colors.firstIndex(where: { $0.id == color.id }) {
+                                    colors[index] = newColor
+                                }
+                            }
+                            dismiss()
+                        }
+                    }
+                    
+                    
+                } label: {
+                    Text("Add")
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .background(.blue)
+                        .foregroundStyle(.white)
+                        .clipShape(Capsule())
                 }
             }
             .padding(.horizontal, 20)
@@ -66,10 +103,6 @@ struct ContentView: View {
         
         return "#\(redHexValue)\(greenHexValue)\(blueHexValue)"
     }
-}
-
-#Preview {
-    ContentView()
 }
 
 //extension Color {
