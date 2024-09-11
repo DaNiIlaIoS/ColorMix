@@ -46,9 +46,9 @@ struct ColorMixView: View {
                     .font(.system(size: 28, weight: .bold))
                 
                 VStack {
-                    Text(viewModel.colors.isEmpty ? "Result color:" : viewModel.colorName.localized)
+                    Text("Result color: " + viewModel.colorName)
                         .fontWeight(.bold)
-                    RectangleColor(height: 150, color: viewModel.mixColors())
+                    RectangleColor(height: 150, color: viewModel.mixColors() ?? .white)
                 }
             }
             .padding()

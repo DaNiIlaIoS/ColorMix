@@ -10,10 +10,10 @@ import SwiftUI
 final class ColorMixViewModel: ObservableObject {
     var network = NetworkManager.shared
     @Published var colors: [CustomColor] = []
-    @Published var colorName: String = ""
+    @Published var colorName: String = "White"
     
-    func mixColors() -> Color {
-        guard !colors.isEmpty else { return .white }
+    func mixColors() -> Color? {
+        guard !colors.isEmpty else { return nil }
         
         var totalRed: CGFloat = 0
         var totalGreen: CGFloat = 0
@@ -36,7 +36,8 @@ final class ColorMixViewModel: ObservableObject {
     }
     
     func getHex() -> String {
-        let uiColor = UIColor(mixColors())
+        guard let color = mixColors() else { return "" }
+        let uiColor = UIColor(color)
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -53,7 +54,8 @@ final class ColorMixViewModel: ObservableObject {
     
     func fetchColorName() {
         network.fetchColor(hex: getHex()) { [weak self] colorName in
-            DispatchQueue.main.async { self?.colorName = colorName ?? "Unknown color" }
+            guard let colorName = colorName else { return }
+            DispatchQueue.main.async { self?.colorName = colorName }
         }
     }
 }
