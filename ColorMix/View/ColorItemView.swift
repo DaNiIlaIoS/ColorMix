@@ -24,7 +24,7 @@ struct ColorItemView: View {
                     .disabled(!isOn)
                 
             }
-            Text("\(NSLocalizedString(colorName, comment: "")) = \(Int(value))")
+            Text("\(colorName.localized) = \(Int(value))")
                 .foregroundStyle(color)
                 .opacity(isOn ? 1 : 0.6)
                 .animation(.easeInOut, value: isOn)

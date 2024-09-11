@@ -19,6 +19,8 @@
 		48CFFDF72C905A3A005D3988 /* ColorMixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDF62C905A3A005D3988 /* ColorMixViewModel.swift */; };
 		48CFFDF92C9060F7005D3988 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDF82C9060F7005D3988 /* ContentViewModel.swift */; };
 		48CFFDFD2C90A01B005D3988 /* RectangleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDFC2C90A01B005D3988 /* RectangleColor.swift */; };
+		48CFFDFF2C91D52E005D3988 /* LanguageSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFDFE2C91D52E005D3988 /* LanguageSetting.swift */; };
+		48CFFE022C91D884005D3988 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFFE012C91D884005D3988 /* String+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		48CFFDF62C905A3A005D3988 /* ColorMixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMixViewModel.swift; sourceTree = "<group>"; };
 		48CFFDF82C9060F7005D3988 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		48CFFDFC2C90A01B005D3988 /* RectangleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleColor.swift; sourceTree = "<group>"; };
+		48CFFDFE2C91D52E005D3988 /* LanguageSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetting.swift; sourceTree = "<group>"; };
+		48CFFE012C91D884005D3988 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				48CFFDD32C8E0368005D3988 /* ColorMixApp.swift */,
+				48CFFDFE2C91D52E005D3988 /* LanguageSetting.swift */,
 				48CFFDF32C90576B005D3988 /* Services */,
 				48CFFDF42C905781005D3988 /* Model */,
 				48CFFDF22C905761005D3988 /* View */,
 				48CFFDF52C905794005D3988 /* ViewModel */,
+				48CFFE002C91D872005D3988 /* Extensions */,
 				48CFFDE42C8ED34A005D3988 /* Localizable.strings */,
 				48CFFDD72C8E036B005D3988 /* Assets.xcassets */,
 				48CFFDD92C8E036B005D3988 /* Preview Content */,
@@ -122,6 +128,14 @@
 				48CFFDF82C9060F7005D3988 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		48CFFE002C91D872005D3988 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				48CFFE012C91D884005D3988 /* String+Ex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +218,9 @@
 				48CFFDF72C905A3A005D3988 /* ColorMixViewModel.swift in Sources */,
 				48CFFDD62C8E0368005D3988 /* ContentView.swift in Sources */,
 				48CFFDD42C8E0368005D3988 /* ColorMixApp.swift in Sources */,
+				48CFFE022C91D884005D3988 /* String+Ex.swift in Sources */,
 				48CFFDF12C90573E005D3988 /* ColorModel.swift in Sources */,
+				48CFFDFF2C91D52E005D3988 /* LanguageSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

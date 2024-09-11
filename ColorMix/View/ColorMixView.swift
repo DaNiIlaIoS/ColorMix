@@ -14,7 +14,6 @@ struct ColorMixView: View {
     
     @State private var nameColor: String = ""
     @State private var isPresenting = false
-    @State private var colors: [CustomColor] = []
     
     var body: some View {
         NavigationStack {
@@ -22,18 +21,19 @@ struct ColorMixView: View {
                 
                 VStack {
                     NavigationLink {
-                        ContentView(action: .add, colors: $colors)
+                        ContentView(action: .add, colors: $viewModel.colors)
                     } label: {
-                        Text("Add new color")
+                        Text("Add new color".localized)
                             .font(.system(size: 26, weight: .bold))
                     }
-
+                    
                     LazyVGrid(columns: columns) {
-                        ForEach(colors) { color in
+                        ForEach(viewModel.colors) { color in
                             VStack {
-                                Text(color.name)
+                                Text(color.name.localized)
+                                    .fontWeight(.bold)
                                 NavigationLink {
-                                    ContentView(action: .edit(color), colors: $colors)
+                                    ContentView(action: .edit(color), colors: $viewModel.colors)
                                 } label: {
                                     RectangleColor(height: 100, color: color.color)
                                 }
@@ -42,41 +42,20 @@ struct ColorMixView: View {
                     }
                 }
                 
-                Text(colors.isEmpty ? "" : "=")
+                Text(viewModel.colors.isEmpty ? "" : "=")
                     .font(.system(size: 28, weight: .bold))
                 
                 VStack {
-                    
-                    RectangleColor(height: 150, color: mixColors(colors))
+                    Text(viewModel.colors.isEmpty ? "Result color:" : viewModel.colorName.localized)
+                        .fontWeight(.bold)
+                    RectangleColor(height: 150, color: viewModel.mixColors())
                 }
             }
             .padding()
-
+            .onAppear {
+                viewModel.fetchColorName()
+            }
         }
-    }
-    
-    func mixColors(_ colors: [CustomColor]) -> Color {
-        guard !colors.isEmpty else { return .white }
-        
-        var totalRed: CGFloat = 0
-        var totalGreen: CGFloat = 0
-        var totalBlue: CGFloat = 0
-        
-        for color in colors {
-            let uiColor = UIColor(color.color)
-            var red: CGFloat = 0
-            var green: CGFloat = 0
-            var blue: CGFloat = 0
-            var alpha: CGFloat = 0
-            uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-            
-            totalRed += red
-            totalGreen += green
-            totalBlue += blue
-        }
-        
-        let count = CGFloat(colors.count)
-        return Color(red: totalRed / count, green: totalGreen / count, blue: totalBlue / count)
     }
 }
 

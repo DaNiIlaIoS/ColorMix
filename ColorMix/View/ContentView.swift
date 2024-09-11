@@ -13,10 +13,10 @@ enum ColorAction {
 }
 
 struct ContentView: View {
-//    @ObservedObject var viewModel: ColorMixViewModel
-    var network = NetworkManager.shared
-    let viewModel = ColorMixViewModel()
+    let viewModel = ContentViewModel()
     var action: ColorAction
+    
+//    @Environment (LanguageSetting.self) var languageSettings 
     
     @State private var redIsOn: Bool = false
     @State private var redValue: Double = 127
@@ -41,6 +41,9 @@ struct ContentView: View {
                     Text("Русский").tag("ru")
                 }
                 .pickerStyle(SegmentedPickerStyle())
+//                .onChange(of: selectedLanguage) {
+//                    languageSettings.locale = Locale(identifier: "en-US")
+//                }
                 
                 VStack {
                     ColorItemView(isOn: $redIsOn, value: $redValue, color: .red, colorName: "Red")
@@ -57,25 +60,28 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    network.fetchColor(hex: rgbToHex()) { colorName in
-                        DispatchQueue.main.async {
-                            let newColor = CustomColor(color: changeColor(), name: colorName ?? "Unknown")
-                            
-                            switch action {
-                            case .add:
-                                colors.append(newColor)
-                            case .edit(let color):
-                                if let index = colors.firstIndex(where: { $0.id == color.id }) {
-                                    colors[index] = newColor
-                                }
-                            }
-                            dismiss()
+                    // Создаём новый цвет с временным именем
+                    let newColor = CustomColor(color: changeColor(), name: "")
+                    
+                    switch action {
+                    case .add:
+                        colors.append(newColor)
+                    case .edit(let color):
+                        if let index = colors.firstIndex(where: { $0.id == color.id }) {
+                            colors[index] = newColor
                         }
                     }
                     
-                    
+                    viewModel.fetchColorName(hex: rgbToHex()) { colorName in
+                        // Обновляем название цвета в массиве после получения ответа
+                        if let index = colors.firstIndex(where: { $0.id == newColor.id }) {
+                            colors[index].name = colorName
+                        }
+                    }
+//                    languageSettings.locale = Locale(identifier: "ru")
+                    dismiss()
                 } label: {
-                    Text("Add")
+                    Text("Add".localized)
                         .padding(.vertical, 12)
                         .frame(maxWidth: .infinity)
                         .background(.blue)

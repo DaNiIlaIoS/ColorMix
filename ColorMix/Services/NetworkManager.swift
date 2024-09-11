@@ -12,7 +12,7 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchColor(hex: String, completion: @escaping (String?)->()) {
+    func fetchColor(hex: String, completion: @escaping (String?) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "www.thecolorapi.com"

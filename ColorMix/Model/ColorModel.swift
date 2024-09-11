@@ -17,6 +17,6 @@ struct Name: Decodable {
 
 struct CustomColor: Identifiable {
     let id = UUID()
-    let color: Color
-    let name: String
+    var color: Color
+    var name: String
 }
