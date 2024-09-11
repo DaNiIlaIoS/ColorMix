@@ -10,5 +10,8 @@
 "Green" = "Green";
 "Blue" = "Blue";
 "Black" = "Black";
+"White" = "White";
 "Add new color" = "Add new color";
 "Add" = "Add";
+"Mixing result" = "Mixing result: ";
+"Remove colors" = "Remove colors";

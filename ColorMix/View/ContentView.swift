@@ -27,8 +27,6 @@ struct ContentView: View {
     @State private var blueIsOn: Bool = false
     @State private var blueValue: Double = 127
     
-    @State private var selectedLanguage: String = "en"
-    
     @Binding var colors: [CustomColor]
     
     @Environment(\.dismiss) var dismiss
@@ -36,15 +34,6 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 50) {
-                Picker("Language", selection: $selectedLanguage) {
-                    Text("English").tag("en")
-                    Text("Русский").tag("ru")
-                }
-                .pickerStyle(SegmentedPickerStyle())
-//                .onChange(of: selectedLanguage) {
-//                    languageSettings.locale = Locale(identifier: "en-US")
-//                }
-                
                 VStack {
                     ColorItemView(isOn: $redIsOn, value: $redValue, color: .red, colorName: "Red")
                     ColorItemView(isOn: $greenIsOn, value: $greenValue, color: .green, colorName: "Green")
@@ -92,6 +81,7 @@ struct ContentView: View {
             .padding(.horizontal, 20)
         }
         .padding(.vertical, 10)
+        .scrollIndicators(.hidden)
     }
     
     func changeColor() -> Color {

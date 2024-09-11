@@ -10,7 +10,7 @@ import SwiftUI
 final class ColorMixViewModel: ObservableObject {
     var network = NetworkManager.shared
     @Published var colors: [CustomColor] = []
-    @Published var colorName: String = "White"
+    @Published var colorName: String = ""
     
     func mixColors() -> Color? {
         guard !colors.isEmpty else { return nil }
