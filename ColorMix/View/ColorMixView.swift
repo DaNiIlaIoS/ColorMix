@@ -11,7 +11,7 @@ struct ColorMixView: View {
     @StateObject private var viewModel = ColorMixViewModel()
     private let columns: [GridItem] = [GridItem(.flexible()),
                                        GridItem(.flexible())]
-    
+    @State var numberOfPeople = 2
     @State private var selectedLanguage: String = "en"
     @State private var nameColor: String = ""
     @State private var isPresenting = false
@@ -71,22 +71,27 @@ struct ColorMixView: View {
                     }
                     .padding(.horizontal, 20)
                 }
-                Button(action: {
-                    withAnimation(.bouncy) {
-                        viewModel.colors.removeAll()
-                        viewModel.colorName = ""
-                    }
-                }, label: {
-                    Text("Remove colors")
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: .infinity)
-                        .background(.blue)
-                        .foregroundStyle(.white)
-                        .clipShape(Capsule())
-                })
+                
+                VStack {
+                    Button(action: {
+                        withAnimation(.bouncy) {
+                            viewModel.colors.removeAll()
+                            viewModel.colorName = ""
+                        }
+                    }, label: {
+                        Text("Remove colors")
+                            .padding(.vertical, 12)
+                            .frame(maxWidth: .infinity)
+                            .background(.blue)
+                            .foregroundStyle(.white)
+                            .clipShape(Capsule())
+                    })
+                }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
             }
+            .navigationTitle("ColorMix")
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.fetchColorName()
             }
