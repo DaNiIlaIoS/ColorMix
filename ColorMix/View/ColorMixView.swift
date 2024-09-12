@@ -37,7 +37,7 @@ struct ColorMixView: View {
                             NavigationLink {
                                 ContentView(action: .add, colors: $viewModel.colors)
                             } label: {
-                                Text("Add new color".localized)
+                                Text("Add new color")
                                     .font(.system(size: 26, weight: .bold))
                             }
                         }
