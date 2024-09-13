@@ -12,7 +12,7 @@ struct ColorMixView: View {
     private let columns: [GridItem] = [GridItem(.flexible()),
                                        GridItem(.flexible())]
     @State var numberOfPeople = 2
-    @State private var selectedLanguage: String = "en"
+    @State private var selectedLanguage: String = "ru"
     @State private var nameColor: String = ""
     @State private var isPresenting = false
     
