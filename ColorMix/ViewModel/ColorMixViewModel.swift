@@ -32,7 +32,8 @@ final class ColorMixViewModel: ObservableObject {
             totalBlue += blue
         }
         
-        return Color(red: totalRed, green: totalGreen, blue: totalBlue)
+        let count = CGFloat(colors.count)
+        return colors.count > 2 ? Color(red: totalRed / count, green: totalGreen / count, blue: totalBlue / count) : Color(red: totalRed, green: totalGreen, blue: totalBlue)
     }
     
     func getHex() -> String {
