@@ -87,6 +87,7 @@ struct ColorMixView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
             }
+            .background(Color(.systemGray6))
             .navigationTitle("ColorMix")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
