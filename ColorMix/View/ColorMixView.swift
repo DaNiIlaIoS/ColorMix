@@ -30,9 +30,6 @@ struct ColorMixView: View {
                             Text("Русский").tag("ru")
                         }
                         .pickerStyle(SegmentedPickerStyle())
-        //                .onChange(of: selectedLanguage) {
-        //                    languageSettings.locale = Locale(identifier: "en-US")
-        //                }
                         VStack {
                             NavigationLink {
                                 ContentView(action: .add, colors: $viewModel.colors)
@@ -102,5 +99,3 @@ struct ColorMixView: View {
 #Preview {
     ColorMixView()
 }
-
-

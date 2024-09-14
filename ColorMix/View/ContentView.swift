@@ -16,7 +16,6 @@ struct ContentView: View {
     let viewModel = ContentViewModel()
     var action: ColorAction
     
-//    @Environment (LanguageSetting.self) var languageSettings 
     
     @State private var redIsOn: Bool = false
     @State private var redValue: Double = 127
@@ -67,7 +66,7 @@ struct ContentView: View {
                             colors[index].name = colorName
                         }
                     }
-//                    languageSettings.locale = Locale(identifier: "ru")
+
                     dismiss()
                 } label: {
                     Text("Add")
