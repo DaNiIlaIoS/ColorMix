@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ColorMixView: View {
+    /// Получаем доступ к менеджеру языков приложения
+    @Environment(LanguageManager.self) var languageManager
+    
     @StateObject private var viewModel = ColorMixViewModel()
     private let columns: [GridItem] = [GridItem(.flexible()),
                                        GridItem(.flexible())]
     @State var numberOfPeople = 2
-    @State private var selectedLanguage: String = "ru"
+    @State private var selectedLanguage: String = "en"
     @State private var nameColor: String = ""
     @State private var isPresenting = false
     
@@ -58,7 +61,7 @@ struct ColorMixView: View {
                                 .font(.system(size: 28, weight: .bold))
                             
                             VStack {
-                                Text("Mixing result".localized + viewModel.colorName.localized)
+                                Text("Mixing result" + viewModel.colorName.localized)
                                     .fontWeight(.bold)
                                     .multilineTextAlignment(.center)
                                 
@@ -92,6 +95,18 @@ struct ColorMixView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.fetchColorName()
+                if UserDefaults.standard.string(forKey: "selectedLanguage") == "en" {
+                    selectedLanguage = "en"
+                } else {
+                    selectedLanguage = "ru"
+                }
+            }
+            .onChange(of: selectedLanguage) { old, new in
+                if new == "ru" {
+                    languageManager.currentLanguage = "ru"
+                } else {
+                    languageManager.currentLanguage = "en"
+                }
             }
         }
     }
